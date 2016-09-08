@@ -19,7 +19,7 @@
 }
 
 #flower-password-input {
-    font: normal 14px/1.5 Tahoma, Helvetica, Arial, \\5b8b\\4f53!important;
+    font: normal 14px/1.5 Tahoma, Helvetica, Arial, \5b8b\4f53!important;
     position: absolute;
     z-index: 999999;
     width: 250px;
@@ -99,7 +99,7 @@
     display: block;
     width: 16px;
     height: 16px;
-    content: "\\D7";
+    content: '\D7';
     text-align: center!important;
 }
 
