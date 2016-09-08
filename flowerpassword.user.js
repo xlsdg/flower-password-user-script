@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Flower Password
 // @namespace    https://greasyfork.org/en/scripts/23026-flower-password
-// @version      0.4.5
+// @version      0.4.6
 // @description  花密 Flower Password --- 可记忆的密码管理方案
 // @author       徐小花, Johnny Jian, xLsDg
-// @include      http://*/*
-// @include      https://*/*
+// @include      http://*
+// @include      https://*
 // @match        http://*/*
 // @match        https://*/*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js
