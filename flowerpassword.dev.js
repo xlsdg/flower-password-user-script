@@ -20,6 +20,10 @@
 // @grant        GM_deleteValue
 // @grant        GM_listValues
 // @grant        GM_registerMenuCommand
+// @grant        GM_log
+// @grant        GM_info
+// @grant        GM_openInTab
+// @grant        unsafeWindow
 // @run-at       document-end
 // @license      MIT License
 // @encoding     utf-8
@@ -67,6 +71,13 @@
         var lstPublicSuffix = GM_getResourceText('lstPublicSuffix');
         window.publicSuffixList.parse(lstPublicSuffix, punycode.toASCII);
 
+        GM_registerMenuCommand('Flower Password', function() {
+            GM_log('Menu');
+            if ($('#flower-password-input').is(':visible')) {
+                $('#flower-password-password').focus();
+            }
+        }, 's', 'alt');
+
         $(document).on('focus', 'input:password', function() {
             if (insideBox($(this))) {
                 return;
@@ -87,8 +98,9 @@
                 top: offset.top + height + 'px'
             }).show();
 
-            var domain = window.publicSuffixList.getDomain(location.hostname);
-            var suffix = window.publicSuffixList.getPublicSuffix(location.hostname);
+            var hostname = location.hostname.toLowerCase();
+            var domain = window.publicSuffixList.getDomain(hostname);
+            var suffix = window.publicSuffixList.getPublicSuffix(hostname);
             var code = '.xxoo';
             var key = domain.replace('.' + suffix, '') + code;
             $('#flower-password-key').val(key);
