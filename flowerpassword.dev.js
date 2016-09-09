@@ -11,7 +11,7 @@
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.3.1/js/md5.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js
-// @require      https://greasyfork.org/scripts/23069-publicsuffixlist-js/code/PublicSuffixListJs.js?version=146619
+// @require      https://greasyfork.org/scripts/23069-publicsuffixlist-js/code/PublicSuffixListJs.js?version=146621
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // @grant        GM_setClipboard
