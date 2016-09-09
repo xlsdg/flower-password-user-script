@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Flower Password
 // @namespace    https://greasyfork.org/en/scripts/23026-flower-password
-// @version      0.4.6
+// @version      0.4.7
 // @description  花密 Flower Password --- 可记忆的密码管理方案
 // @author       徐小花, Johnny Jian, xLsDg
 // @include      http://*
@@ -10,14 +10,21 @@
 // @match        https://*/*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.3.1/js/md5.min.js
-// @grant        GM_addStyle
-// @grant        GM_getResourceText
-// @grant        GM_setClipboard
-// @grant        GM_getValue
-// @grant        GM_setValue
+// @require      https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js
+// @require      https://greasyfork.org/scripts/23069-publicsuffixlist-js/code/PublicSuffixListJs.js?version=146621
+// @grant        GM_info
 // @grant        GM_deleteValue
 // @grant        GM_listValues
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @grant        GM_getResourceText
+// @grant        GM_getResourceURL
+// @grant        GM_addStyle
+// @grant        GM_log
+// @grant        GM_openInTab
 // @grant        GM_registerMenuCommand
+// @grant        GM_setClipboard
+// @grant        unsafeWindow
 // @run-at       document-end
 // @license      MIT License
 // @encoding     utf-8
@@ -25,6 +32,7 @@
 // @supportURL   https://github.com/xlsdg/flower-password-user-script/issues
 // @icon         https://raw.githubusercontent.com/xlsdg/flower-password-user-script/master/icon.png
 // @resource     fpStyle https://raw.githubusercontent.com/xlsdg/flower-password-user-script/master/fp.min.css
+// @resource     lstPublicSuffix https://publicsuffix.org/list/public_suffix_list.dat
 // ==/UserScript==
 
 (function() {
@@ -61,6 +69,13 @@
             return e.parents('#flower-password-input').size() > 0;
         }
 
+        var lstPublicSuffix = GM_getResourceText('lstPublicSuffix');
+        window.publicSuffixList.parse(lstPublicSuffix, punycode.toASCII);
+
+        var hostname = location.hostname.toLowerCase();
+        var domain = window.publicSuffixList.getDomain(hostname);
+        var suffix = window.publicSuffixList.getPublicSuffix(hostname);
+
         $(document).on('focus', 'input:password', function() {
             if (insideBox($(this))) {
                 return;
@@ -80,6 +95,10 @@
                 left: offset.left + 'px',
                 top: offset.top + height + 'px'
             }).show();
+
+            var code = '';
+            var key = domain.replace('.' + suffix, '') + code;
+            $('#flower-password-key').val(key);
         });
 
         $(document).on('focus', 'input:not(:password)', function() {

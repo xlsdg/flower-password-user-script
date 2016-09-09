@@ -12,17 +12,18 @@
 // @require      https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.3.1/js/md5.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js
 // @require      https://greasyfork.org/scripts/23069-publicsuffixlist-js/code/PublicSuffixListJs.js?version=146621
-// @grant        GM_addStyle
-// @grant        GM_getResourceText
-// @grant        GM_setClipboard
-// @grant        GM_getValue
-// @grant        GM_setValue
+// @grant        GM_info
 // @grant        GM_deleteValue
 // @grant        GM_listValues
-// @grant        GM_registerMenuCommand
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @grant        GM_getResourceText
+// @grant        GM_getResourceURL
+// @grant        GM_addStyle
 // @grant        GM_log
-// @grant        GM_info
 // @grant        GM_openInTab
+// @grant        GM_registerMenuCommand
+// @grant        GM_setClipboard
 // @grant        unsafeWindow
 // @run-at       document-end
 // @license      MIT License
@@ -71,6 +72,10 @@
         var lstPublicSuffix = GM_getResourceText('lstPublicSuffix');
         window.publicSuffixList.parse(lstPublicSuffix, punycode.toASCII);
 
+        var hostname = location.hostname.toLowerCase();
+        var domain = window.publicSuffixList.getDomain(hostname);
+        var suffix = window.publicSuffixList.getPublicSuffix(hostname);
+
         GM_registerMenuCommand('Flower Password', function() {
             GM_log('Menu');
             if ($('#flower-password-input').is(':visible')) {
@@ -98,9 +103,6 @@
                 top: offset.top + height + 'px'
             }).show();
 
-            var hostname = location.hostname.toLowerCase();
-            var domain = window.publicSuffixList.getDomain(hostname);
-            var suffix = window.publicSuffixList.getPublicSuffix(hostname);
             var code = '.xxoo';
             var key = domain.replace('.' + suffix, '') + code;
             $('#flower-password-key').val(key);
