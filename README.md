@@ -1,5 +1,5 @@
 # flower-password-user-script
-Flower Password for User Script.
+Flower Password implementation for User Script.
 
 ## 1.“花密”是用来干什么的
 
