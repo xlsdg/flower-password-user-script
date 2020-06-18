@@ -96,7 +96,7 @@
       '<label for="flower-password-password">记忆密码</label><input id="flower-password-password" name="flower-password-password" type="password" value=""/>' +
       '<br/>' +
       '<label for="flower-password-key">区分代号</label><input id="flower-password-key" name="flower-password-key" type="text" value=""/>' +
-      '<p id="flower-password-hint">· 记忆密码：可选择一个简单易记的密码，用于生成其他高强度密码。<br/>· 区分代号：用于区别不同用途密码的简短代号，如淘宝账号可用“taobao”或“tb”等。<br/>· 按Enter键或Esc键关闭本窗口。<br/>· 花密官网地址：<a href="http://flowerpassword.com/" target="_blank">http://flowerpassword.com/</a></p>' +
+      '<p id="flower-password-hint">· 记忆密码：可选择一个简单易记的密码，用于生成其他高强度密码。<br/>· 区分代号：用于区别不同用途密码的简短代号，如淘宝账号可用“taobao”或“tb”等。<br/>· 按Enter键或Esc键关闭本窗口。<br/>· 花密官网地址：<a href="https://flowerpassword.com/" target="_blank">https://flowerpassword.com/</a></p>' +
       '</div>';
     $('body').append(html);
 
