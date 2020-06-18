@@ -1,0 +1,27 @@
+{
+  "name": "flower-password-user-script",
+  "version": "1.0.0",
+  "description": "Flower Password implementation for User Script.",
+  "main": "flowerpassword.user.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xlsdg/flower-password-user-script.git"
+  },
+  "keywords": [
+    "huami",
+    "flowerpassword",
+    "userscript"
+  ],
+  "author": "xLsDg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xlsdg/flower-password-user-script/issues"
+  },
+  "homepage": "https://github.com/xlsdg/flower-password-user-script#readme",
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
+}
