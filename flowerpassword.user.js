@@ -10,7 +10,7 @@
 // @match        https://*/*
 // @require      https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 // @require      https://cdn.jsdelivr.net/npm/fpcode/dist/flowerpassword.umd.js
-// @require      https://cdn.jsdelivr.net/npm/punycode/punycode.min.js
+// @require      https://cdn.jsdelivr.net/npm/punycode@1.4.1/punycode.min.js
 // @require      https://cdn.jsdelivr.net/gh/gorhill/publicsuffixlist.js/publicsuffixlist.min.js
 // @grant        GM_info
 // @grant        GM_deleteValue
@@ -42,7 +42,7 @@
 
   function setupInputListeners() {
     function insideBox(e) {
-      return e.parents('#flower-password-input').size() > 0;
+      return e.parents('#flower-password-input').length > 0;
     }
 
     var lstPublicSuffix = GM_getResourceText('lstPublicSuffix');
@@ -88,7 +88,7 @@
   }
 
   function isInjected() {
-    return $('#flower-password-input').size() > 0;
+    return $('#flower-password-input').length > 0;
   }
 
   function lazyInject() {
