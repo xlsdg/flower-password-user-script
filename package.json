@@ -2,7 +2,7 @@
   "name": "flower-password-user-script",
   "version": "1.0.0",
   "description": "Flower Password implementation for User Script.",
-  "main": "flowerpassword.js",
+  "main": "flowerpassword.user.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
