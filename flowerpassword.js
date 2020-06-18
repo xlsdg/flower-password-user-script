@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Flower Password
-// @namespace    https://greasyfork.org/en/scripts/23026-flower-password
-// @version      0.4.9
+// @namespace    https://greasyfork.org/zh-CN/scripts/23026-flower-password
+// @version      0.5.0
 // @description  花密 Flower Password --- 可记忆的密码管理方案
 // @author       徐小花, Johnny Jian, xLsDg
 // @include      http://*
@@ -12,19 +12,9 @@
 // @require      https://cdn.jsdelivr.net/npm/fpcode/dist/flowerpassword.umd.js
 // @require      https://cdn.jsdelivr.net/npm/punycode@1.4.1/punycode.min.js
 // @require      https://cdn.jsdelivr.net/gh/gorhill/publicsuffixlist.js/publicsuffixlist.min.js
-// @grant        GM_info
-// @grant        GM_deleteValue
-// @grant        GM_listValues
-// @grant        GM_setValue
-// @grant        GM_getValue
 // @grant        GM_getResourceText
-// @grant        GM_getResourceURL
 // @grant        GM_addStyle
-// @grant        GM_log
-// @grant        GM_openInTab
-// @grant        GM_registerMenuCommand
 // @grant        GM_setClipboard
-// @grant        unsafeWindow
 // @run-at       document-end
 // @license      MIT License
 // @encoding     utf-8
@@ -46,11 +36,11 @@
     }
 
     var lstPublicSuffix = GM_getResourceText('lstPublicSuffix');
-    window.publicSuffixList.parse(lstPublicSuffix, punycode.toASCII);
+    publicSuffixList.parse(lstPublicSuffix, punycode.toASCII);
 
     var hostname = location.hostname.toLowerCase();
-    var domain = window.publicSuffixList.getDomain(hostname);
-    var suffix = window.publicSuffixList.getPublicSuffix(hostname);
+    var domain = publicSuffixList.getDomain(hostname);
+    var suffix = publicSuffixList.getPublicSuffix(hostname);
 
     $(document).on('focus', 'input:password', function () {
       if (insideBox($(this))) {
@@ -97,7 +87,6 @@
     }
 
     var style = GM_getResourceText('fpStyle');
-    // var style = '#flower-password-input,#flower-password-input span,#flower-password-input h1,#flower-password-input label,#flower-password-input input,#flower-password-input p,#flower-password-input a{border:0;font:inherit;font-size:100%;color:#000;background:#FFF;text-align:left;vertical-align:baseline;line-height:1;box-sizing:content-box!important;margin:0;padding:0;}#flower-password-input{border:2px solid #168BC3!important;font:normal 14px/1.5 Tahoma, Helvetica, Arial, \\5b8b\\4f53!important;width:250px;z-index:999999;position:absolute;padding:10px!important;}#flower-password-input h1{font-size:21px!important;font-weight:700!important;color:#168BC3!important;margin:0 0 5px!important;}#flower-password-input input[type=text],#flower-password-input input[type=password]{border:1px solid #999!important;border-radius:3px;font-size:14px!important;display:inline;height:18px;width:160px;margin:5px 10px!important;padding:5px!important;}#flower-password-input input[type=checkbox]{border:1px solid #999!important;border-radius:3px;vertical-align:middle!important;display:inline-block;width:13px;height:13px;cursor:pointer;-webkit-appearance:none;margin:10px!important;}#flower-password-input input[type=checkbox]:checked::after{display:block;position:relative;top:-3px;left:-5px;}#flower-password-input label{vertical-align:middle!important;display:inline;float:none;}#flower-password-input p{font-size:12px!important;color:#999!important;line-height:1.5!important;}#flower-password-close{border:2px solid #168BC3!important;font-weight:700!important;color:#FFF!important;background:#168BC3!important;display:block;width:16px;height:16px;overflow:hidden;position:absolute;top:-2px;right:-2px;cursor:pointer;}#flower-password-close::before{text-align:center!important;line-height:16px!important;content:"\\D7";display:block;width:16px;height:16px;position:relative;top:-1px;}#flower-password-input a{color:#168BC3!important;text-decoration:none;cursor:pointer;}#flower-password-input a:hover{color:#FF881C!important;text-decoration:none;cursor:pointer;}#flower-password-toolbar{display:block;text-align:right!important;}#flower-password-toolbar a{font-size:12px!important;margin-left:10px!important;display:inline;}#flower-password-input a img{vertical-align:middle!important;}#flower-password-hint{margin-top:10px!important;}';
     GM_addStyle(style);
 
     var html =
