@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Flower Password
 // @namespace    https://greasyfork.org/en/scripts/23026-flower-password
-// @version      0.4.8
+// @version      0.4.9
 // @description  花密 Flower Password --- 可记忆的密码管理方案
 // @author       徐小花, Johnny Jian, xLsDg
 // @include      http://*
