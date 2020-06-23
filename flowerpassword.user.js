@@ -1,9 +1,15 @@
 // ==UserScript==
 // @name         Flower Password
+// @name:zh-CN   花密
 // @namespace    https://greasyfork.org/zh-CN/scripts/23026-flower-password
-// @version      0.5.1
-// @description  花密 Flower Password --- 可记忆的密码管理方案
+// @version      0.5.2
 // @author       徐小花, Johnny Jian, xLsDg
+// @description  花密 Flower Password - 可记忆的密码管理方案
+// @homepageURL  https://github.com/xlsdg/flower-password-user-script
+// @icon         https://cdn.jsdelivr.net/gh/xlsdg/flower-password-user-script/icon.png
+// @updateURL    https://cdn.jsdelivr.net/gh/xlsdg/flower-password-user-script/flowerpassword.user.js
+// @downloadURL  https://cdn.jsdelivr.net/gh/xlsdg/flower-password-user-script/flowerpassword.user.js
+// @supportURL   https://github.com/xlsdg/flower-password-user-script/issues
 // @include      http://*
 // @include      https://*
 // @match        http://*/*
@@ -12,17 +18,14 @@
 // @require      https://cdn.jsdelivr.net/npm/fpcode/dist/flowerpassword.umd.js
 // @require      https://cdn.jsdelivr.net/npm/punycode@1.4.1/punycode.min.js
 // @require      https://cdn.jsdelivr.net/gh/gorhill/publicsuffixlist.js/publicsuffixlist.min.js
+// @resource     FP_STYLE https://cdn.jsdelivr.net/gh/xlsdg/flower-password-user-script/fp.min.css
+// @resource     PUBLIC_SUFFIX_LIST https://publicsuffix.org/list/public_suffix_list.dat
+// @run-at       document-end
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // @grant        GM_setClipboard
-// @run-at       document-end
 // @license      MIT License
 // @encoding     utf-8
-// @homepageURL  https://github.com/xlsdg/flower-password-user-script
-// @supportURL   https://github.com/xlsdg/flower-password-user-script/issues
-// @icon         https://cdn.jsdelivr.net/gh/xlsdg/flower-password-user-script/icon.png
-// @resource     fpStyle https://cdn.jsdelivr.net/gh/xlsdg/flower-password-user-script/fp.min.css
-// @resource     lstPublicSuffix https://publicsuffix.org/list/public_suffix_list.dat
 // ==/UserScript==
 
 (function () {
@@ -35,7 +38,7 @@
       return e.parents('#flower-password-input').length > 0;
     }
 
-    var lstPublicSuffix = GM_getResourceText('lstPublicSuffix');
+    var lstPublicSuffix = GM_getResourceText('PUBLIC_SUFFIX_LIST');
     publicSuffixList.parse(lstPublicSuffix, punycode.toASCII);
 
     var hostname = location.hostname.toLowerCase();
@@ -86,7 +89,7 @@
       return;
     }
 
-    var style = GM_getResourceText('fpStyle');
+    var style = GM_getResourceText('FP_STYLE');
     GM_addStyle(style);
 
     var html =
